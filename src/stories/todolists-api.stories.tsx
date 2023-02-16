@@ -32,9 +32,10 @@ export const CreateTodolist = () => {
         const todoName = 'REACT&Redux'
         // axios.post('https://social-network.samuraijs.com/api/1.1/todo-lists', {title: todoName}, settings)
             todoListApi.createTodolist(todoName)
-            .then((res) => {
-                setState(res.data)
-            })
+                .then((res) => {
+                    debugger
+                    setState(res)
+                })
     }, [])
 
     return <div>{JSON.stringify(state)}</div>
@@ -42,7 +43,7 @@ export const CreateTodolist = () => {
 export const DeleteTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todoId = 'a9ec1b66-2a02-438c-8f2a-4f6bce20be19'
+        const todoId = 'c3a7fa70-091e-49c0-84f0-669195783a01'
         // axios.delete(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`, settings)
         todoListApi.deleteTodolist(todoId)
             .then((res) => {
@@ -55,8 +56,8 @@ export const DeleteTodolist = () => {
 export const UpdateTodolistTitle = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const id = '0c499abc-31b0-4252-a01b-83c5f08c8d40'
-        const todoName = 'REACT&JSkeee'
+        const id = '5e9fda75-294a-401d-a5b3-d85b78b04477'
+        const todoName = 'REACT&JSkeeewww'
         // const promise = axios.put(`https://social-network.samuraijs.com/api/1.1/todo-lists/${id}`, {title: todoName}, settings)
         todoListApi.updateTodoList(id, todoName)
             .then((res) => {
