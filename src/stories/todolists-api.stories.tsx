@@ -20,7 +20,8 @@ export const GetTodolists = () => {
         // axios.get('https://social-network.samuraijs.com/api/1.1/todo-lists', settings)
         todoListApi.getTodolists()
             .then((res) => {
-                setState(res.data)
+                const result = res.data
+                setState(result)
             })
 
     }, [])
@@ -33,8 +34,7 @@ export const CreateTodolist = () => {
         // axios.post('https://social-network.samuraijs.com/api/1.1/todo-lists', {title: todoName}, settings)
             todoListApi.createTodolist(todoName)
                 .then((res) => {
-                    debugger
-                    setState(res)
+                    setState(res.data)
                 })
     }, [])
 
@@ -43,7 +43,7 @@ export const CreateTodolist = () => {
 export const DeleteTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todoId = 'c3a7fa70-091e-49c0-84f0-669195783a01'
+        const todoId = 'ea245ec2-6587-4b4b-a6b5-8b2df858330b'
         // axios.delete(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`, settings)
         todoListApi.deleteTodolist(todoId)
             .then((res) => {

@@ -18,17 +18,43 @@ const instance = axios.create({
 
 export const todoListApi = {
     updateTodoList(id: string, title: string) {
-        const promise = instance.put(`todo-lists/${id}`, {title})
+        const promise = instance.put<ResponseType>(`todo-lists/${id}`, {title})
         return promise
     },
     createTodolist(title: string) {
-        return instance.post('todo-lists', {title})
-            .then((res) => res.data)
+        return instance.post<ResponseType<{item: Todolists}>>('todo-lists', {title})
+            .then((res) => res)
     },
     deleteTodolist(todoId: string) {
-        return instance.delete(`todo-lists/${todoId}`)
+        return instance.delete<ResponseType>(`todo-lists/${todoId}`)
     },
     getTodolists() {
-        return instance.get('todo-lists')
+        return instance.get<Todolists[]>('todo-lists')
     },
 }
+
+// то что возращает каждый эндпойнт. Когда промис резолвится
+
+type Todolists = {
+    id: string
+    title: string
+    addedDate: string
+    order: number         
+}
+
+// дефолтное состояние, по аналогии с функцией
+type ResponseType<T = {}> = {
+    resultCode: number
+    messages: string[]   //Array<string>
+    data: T
+}
+
+// //придумать общее название
+// type UpdateTodoListTypeAndDelete = {
+//     resultCode: number
+//     messages: string[]
+//     data: {}
+//     // fieldsErrors: []                 // если поле всегда приходит пустое его можно не писывать
+//     fieldsErrors?: []                   // или так
+// }
+
