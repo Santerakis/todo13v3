@@ -1,5 +1,4 @@
 import axios from "axios";
-import {CreateTodolist, DeleteTodolist, GetTodolists} from "../stories/todolists-api.stories";
 
 const settings = {
     withCredentials: true,
@@ -17,8 +16,8 @@ const instance = axios.create({
 })
 
 export const todoListApi = {
-    updateTodoList(id: string, title: string) {
-        const promise = instance.put<ResponseType>(`todo-lists/${id}`, {title})
+    updateTodoList(todoId: string, title: string) {
+        const promise = instance.put<ResponseType>(`todo-lists/${todoId}`, {title})
         return promise
     },
     createTodolist(title: string) {
