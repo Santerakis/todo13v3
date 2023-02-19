@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {taskApi} from "../api/task-api";
+import {taskApi, TaskType} from "../api/task-api";
 
 
 export default {
@@ -8,11 +8,14 @@ export default {
 
 export const GetTasks = () => {
     const [state, setState] = useState<any>(null)
+    // const [title, setTitle] = useState<string>('')
+
     useEffect(() => {
-        const todoId = '0b46b098-09bd-4242-a898-96ea25073d75'
+        const todoId = '5e9fda75-294a-401d-a5b3-d85b78b04477'
         taskApi.getTasks(todoId)
             .then((res) => {
-                setState(res.data)
+                setState(res)
+                // setTitle(res.data.items[0].title)
             })
     }, [])
 
@@ -21,7 +24,7 @@ export const GetTasks = () => {
 export const CreateTask = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todoId = '0b46b098-09bd-4242-a898-96ea25073d75'
+        const todoId = '5e9fda75-294a-401d-a5b3-d85b78b04477'
         const title = 'New task name'
         taskApi.createTask(todoId, title)
             .then((res) => {
@@ -34,8 +37,8 @@ export const CreateTask = () => {
 export const UpdateTask = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todoId = '0b46b098-09bd-4242-a898-96ea25073d75'
-        const taskId = '3c2c1701-b937-4c49-aa93-a2d7f9dcf345'
+        const todoId = '5e9fda75-294a-401d-a5b3-d85b78b04477'
+        const taskId = 'e046d71c-47aa-45d3-90a1-5e4c5dd504e9'
         const title = 'Update task name'
         taskApi.updateTask(todoId, taskId, title)
             .then((res) => {
@@ -48,8 +51,8 @@ export const UpdateTask = () => {
 export const DeleteTask = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todoId = '0b46b098-09bd-4242-a898-96ea25073d75'
-        const taskId = '3c2c1701-b937-4c49-aa93-a2d7f9dcf345'
+        const todoId = '5e9fda75-294a-401d-a5b3-d85b78b04477'
+        const taskId = 'aa7a68f4-5b16-4ac2-ad71-cb66bc9d6867'
         taskApi.deleteTask(todoId, taskId)
             .then((res) => {
                 setState(res.data)
