@@ -22,7 +22,7 @@ export const taskApi = {
         return instance.post<TaskResponseType<{item: TaskType}>>(`/todo-lists/${todoId}/tasks`, {title})
     },
     updateTask(todoId: string, taskId: string, model: UpdateTaskModelType) {
-        return instance.put<TaskResponseType<{item: TaskType}>>(`/todo-lists/${todoId}/tasks/${taskId}`, {title})
+        return instance.put<TaskResponseType<{item: TaskType}>>(`/todo-lists/${todoId}/tasks/${taskId}`, model)
     },
     deleteTask(todoId: string, taskId: string) {
         return instance.delete<TaskResponseType>(`/todo-lists/${todoId}/tasks/${taskId}`)
@@ -60,6 +60,6 @@ type UpdateTaskModelType = {
     description: string
     status: number
     priority: number
-    startDate: string
+    startDate?: string
     deadline: string
 }
